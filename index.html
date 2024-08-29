@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Calculator</title>
+    <meta name="description" content="Calculate your cryptocurrency investments with our easy-to-use cryptocurrency calculator. Simulate purchases, calculate transaction fees, and project your earnings in multiple currencies.">
+    <meta name="keywords" content="cryptocurrency calculator, crypto calculator, Bitcoin, Ethereum, Dogecoin, Litecoin, Ripple, investment calculator, crypto investment, crypto fees, crypto earnings">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="currency-selector">
+    <select id="currency" onchange="updateCurrency()">
+        <option value="USD" selected>USD - US Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="BRL">BRL - Brazilian Real</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="CAD">CAD - Canadian Dollar</option>
+        <option value="AUD">AUD - Australian Dollar</option>
+    </select>
+</div>
+
+<div class="container">
+    <h2>Cryptocurrency Calculator</h2>
+    
+    <label for="crypto">Choose Cryptocurrency:</label>
+    <select id="crypto" onchange="toggleManualCryptoPrice()">
+        <option value="bitcoin">Bitcoin (BTC)</option>
+        <option value="ethereum">Ethereum (ETH)</option>
+        <option value="dogecoin">Dogecoin (DOGE)</option>
+        <option value="litecoin">Litecoin (LTC)</option>
+        <option value="ripple">Ripple (XRP)</option>
+        <option value="other">Other</option>
+    </select>
+
+    <div id="manualCryptoPriceContainer">
+        <label for="cryptoPrice">Cryptocurrency Price (USD):</label>
+        <input type="number" id="cryptoPrice" placeholder="Ex: 45000" min="0" step="0.01">
+    </div>
+
+    <label for="exchange">Choose Exchange:</label>
+    <select id="exchange" onchange="setFee()">
+        <option value="binance">Binance</option>
+        <option value="coinbase">Coinbase</option>
+        <option value="kraken">Kraken</option>
+        <option value="bitstamp">Bitstamp</option>
+        <option value="gemini">Gemini</option>
+    </select>
+
+    <label for="amount">Amount in <span id="currencyLabel">USD</span>:</label>
+    <input type="number" id="amount" placeholder="Ex: 1000" min="0">
+
+    <label for="fee">Transaction Fee (%):</label>
+    <input type="number" id="fee" placeholder="Auto fee" min="0" step="0.1" readonly>
+    <label>
+        <input type="checkbox" id="manualFee" onclick="toggleManualFee()"> Enter fee manually
+    </label>
+
+    <div class="button-container">
+        <button onclick="calculateCrypto()">Calculate</button>
+        <button onclick="clearFields()" style="background-color: #dc3545;">Clear</button>
+    </div>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
